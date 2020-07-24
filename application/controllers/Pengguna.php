@@ -47,9 +47,9 @@ class Pengguna extends CI_Controller
 	}
 	public function cetak_pengguna()
 	{
-		
-		$data['row'] = $this->M_Pengguna->get()->row();
-		$html = $this->load->view('Admin/pengguna/cetak_pengguna',$data);
-		// $this->pdf->PDFprint('tes','tes','A4','landscape');
+		$id = $this->input->post('user_id');
+		$data['row'] = $this->M_Pengguna->get($id)->row();
+		$html = $this->load->view('Admin/pengguna/cetak_pengguna',$data,true);
+		$this->pdf->PDFprint($html,'kartu pengguna'.$data['row']->user_id,'A4','landscape');
 	}
 }

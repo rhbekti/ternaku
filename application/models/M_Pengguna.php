@@ -2,9 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class M_Pengguna extends CI_Model
 {
-    function get()
+    function get($id)
     {
-        $id = $this->input->post('user_id');
         $this->db->where('user_id',$id);
         $hasil = $this->db->get('web_user');
         return $hasil;
